@@ -1,0 +1,17 @@
+---
+ - name: Update Cache
+   apt:
+     update_cache: yes
+ - name: instalacao nginx
+   apt:
+     name: nginx
+
+# - name: Copiando arquico de configuração
+#   copy: src=default.conf dest=/etc/nginx/conf.d/
+
+ - name: Copiando index.html
+   template: src=index.html dest=/var/www/html
+
+ - name: Iniciando serviço
+   service: name=nginx state=restarted
+
